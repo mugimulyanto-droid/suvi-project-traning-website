@@ -40,3 +40,16 @@ model Pendaftaran {
   @@unique([email, kursus_id], name: "unique_email_course")
   @@map("pendaftaran")
 }
+
+model Produk {
+  id          Int      @id @default(autoincrement())
+  nama_produk String   @db.VarChar(255)
+  deskripsi   String?  @db.Text
+  harga       Int
+  stok        Int      @default(0)
+  gambar_url  String?  @db.VarChar(500)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  @@map("produk")
+}
